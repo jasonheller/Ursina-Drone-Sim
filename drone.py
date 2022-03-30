@@ -16,7 +16,7 @@ class Drone(Entity):
             )
         self.speed = 0
         
-        self.fmode = ["Race", "Assisted", "Cinematic"]
+        self.fmode = ["Race", "Cinematic"]
         self.acceleration = 0.25
         self.droneSpeed = .5
         self.droneForwardSpeed = 35
@@ -31,6 +31,7 @@ class Drone(Entity):
         self.speed = 0
         self.rotation_x = 0
         self.rotation_z = 0
+        self.rotation_y = 0
 
     def update(self):
 
@@ -38,26 +39,23 @@ class Drone(Entity):
         self.spe.text = "Speed: "+str(self.speed)
         self.md.text = "Mode: "+str(self.fmode[self.index])
 
-        # Modes
         # Race
         if self.index == 0:
             self.speed = min(self.speed, self.droneSpeed)
             self.y += self.speed
-        # Assisted
+        # Cinematic
         elif self.index == 1:
-            self.speed = min(self.speed, self.droneSpeed)
-            self.y += self.speed
-        # Cine
-        elif self.index == 2:
             self.y = self.y
             self.rotation_x = 0
             self.rotation_z = 0
         
-        # go up
+        # hold speed
         if held_keys['space']:
-            self.y += self.speed
+            self.speed += self.acceleration * time.dt
             self.rotation_x = 0
             self.rotation_z = 0
+        else:
+            self.speed -= self.acceleration * time.dt
         
         # flight_mode
         if held_keys['x']:
@@ -67,27 +65,27 @@ class Drone(Entity):
         
         # flight controls
         if held_keys['w']:
-            self.speed += self.acceleration * time.dt 
             self.rotation_x = 8
-            self.z += self.acceleration * self.droneForwardSpeed* time.dt
-        else:
-            self.speed -= self.acceleration * time.dt
+            self.z += self.acceleration * self.droneForwardSpeed * time.dt
 
         if held_keys['s']:
-            self.autoHold = False
             self.rotation_x = -8
             self.z -= self.acceleration * self.droneForwardSpeed* time.dt
+        
+        if held_keys['a']:
+            self.rotation_x = -8
+            self.x -= self.acceleration * self.droneForwardSpeed* time.dt
 
+        if held_keys['d']:
+            self.rotation_x = -8
+            self.x += self.acceleration * self.droneForwardSpeed* time.dt
+ 
+        if held_keys['q']:
+            self.rotation_y -= 24 * time.dt
+        
+        if held_keys['e']:
+            self.rotation_y += 24 * time.dt
+            
         if self.y < 0:
             self.reset()
-        
-        #if held_keys['a']: 
-        #    self.x -= self.acceleration * self.droneForwardSpeed * time.dt
-        #    self.rotation_z = -8
-
-        #if held_keys['a']: 
-        #    self.x += self.acceleration * self.droneForwardSpeed * time.dt
-        #    self.rotation_z = 8       
-
-        # reset
 
