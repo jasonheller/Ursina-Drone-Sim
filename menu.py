@@ -1,7 +1,7 @@
 from ursina import *
 
 class Menu(Entity):
-    def __init__(self, drone):
+    def __init__(self, drone, loader):
         super().__init__(parent=camera.ui, ignore=self)
         
         drone.enabled = False
@@ -27,9 +27,15 @@ class Menu(Entity):
             self.main_menu.enabled = True
 
         # Map Functions
-        def TestMap():
-            self.map_menu.enabled = False
+        def LoadCustomMap():
+            loader.enabled = True
+            drone.enabled = False
+        
+        # Testing Only!
+        def UnstableBuild():
             drone.enabled = True
+            self.map_menu.enabled = False
+            
 
         # Main Menu
         Text("Drone Simulator", y=0.4, parent=self.main_menu, scale=3, origin=(0,0))
@@ -45,5 +51,6 @@ class Menu(Entity):
         Text("Map Selection", y=0.4, parent=self.map_menu, scale=3, origin=(0,0))
         Button(text="Back", y=-0.2, parent=self.map_menu, scale_x=0.2, scale_y=0.1, on_click=mainMenu)
         # Maps
-        Button(text="Test Map", y=0.1, parent=self.map_menu, scale_x=0.2, scale_y=0.2, on_click=TestMap)
+        Button(text="Load custom map", y=-0.2, x=0.6, parent=self.map_menu, scale_x=0.22, scale_y=0.1, on_click=LoadCustomMap)
+        Button(text="Play unstable", y=-0.2, x=-0.6, parent=self.map_menu, scale_x=0.22, scale_y=0.1, on_click=UnstableBuild)
 

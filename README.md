@@ -19,6 +19,7 @@
 	These things listed below might me added in the Future!
 	- [ ] At least 1 map with obstacles
 	- [ ] Better POV Camera system
+	- [ ] Custom map loading, JSON support? 
 	- [ ] Online Mode?
 
 ### License
