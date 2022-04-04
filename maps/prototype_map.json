@@ -1,1 +1,5 @@
-
+{
+  "map_name": "Prototype Map",
+  "map_desc": "A prototype map to test basic functionalities",
+  "map_version": "1.0"
+}

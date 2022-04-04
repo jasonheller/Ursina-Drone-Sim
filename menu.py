@@ -35,7 +35,6 @@ class Menu(Entity):
         def UnstableBuild():
             drone.enabled = True
             self.map_menu.enabled = False
-            
 
         # Main Menu
         Text("Drone Simulator", y=0.4, parent=self.main_menu, scale=3, origin=(0,0))
