@@ -53,3 +53,4 @@ class Menu(Entity):
         Button(text="Load custom map", y=-0.2, x=0.6, parent=self.map_menu, scale_x=0.22, scale_y=0.1, on_click=LoadCustomMap)
         Button(text="Play unstable", y=-0.2, x=-0.6, parent=self.map_menu, scale_x=0.22, scale_y=0.1, on_click=UnstableBuild)
 
+        

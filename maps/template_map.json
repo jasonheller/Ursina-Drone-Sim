@@ -1,0 +1,13 @@
+{
+  "map_name": "Template Map",
+  "map_desc": "A map template to change",
+  "map_version": "1.0",
+
+  "double_sided":  true,
+  "path_to_map": "none",
+  "path_to_texture": "none",
+  "map_scale": 1,
+  "map_x": 0,
+  "map_y": 0,
+  "map_z": 0
+}
