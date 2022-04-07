@@ -1,7 +1,6 @@
 from ursina import *
 from drone import Drone
 from menu import Menu
-from maploader import MapLoader
 
 window.borderless = False
 window.show_ursina_splash = True
@@ -10,9 +9,7 @@ window.exit_button.enabled = False
 Sky()
 
 drone = Drone()
-maploader = MapLoader()
-menu = Menu(drone=drone, loader=maploader)
-EditorCamera(enabled=True)
+menu = Menu(drone=drone)
 
 def update():
     pass
