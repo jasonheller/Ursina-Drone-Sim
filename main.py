@@ -12,7 +12,7 @@ Sky()
 drone = Drone()
 maploader = MapLoader()
 menu = Menu(drone=drone, loader=maploader)
-EditorCamera()
+EditorCamera(enabled=True)
 
 def update():
     pass
